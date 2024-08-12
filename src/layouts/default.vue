@@ -34,10 +34,16 @@
               <h-menu-item name="1-4-1"> <h-icon name="addition_fill"></h-icon>申购</h-menu-item>
               <h-menu-item name="1-4-2"> <h-icon name="ios-minus"></h-icon>赎回</h-menu-item>
             </h-submenu>
-            <h-menu-item name="1-5">
-              <h-icon name="cash"></h-icon>
-              <span>账户清算</span>
-            </h-menu-item>
+            <h-submenu name="1-5">
+              <template slot="title">
+                <h-icon name="cash"></h-icon>
+                <span>账户清算</span>
+              </template>
+              <h-menu-item name="1-5-1"> <h-icon name="refresh"></h-icon>日初始化</h-menu-item>
+              <h-menu-item name="1-5-2"> <h-icon name="android-done"></h-icon>交易确认</h-menu-item>
+              <h-menu-item name="1-5-3"> <h-icon name="printer"></h-icon>数据导出</h-menu-item>
+              <h-menu-item name="1-5-4"> <h-icon name="ios-paper-outline"></h-icon>日志查询</h-menu-item>
+            </h-submenu>
             <h-menu-item name="1-6">
               <h-icon name="card"></h-icon>
               <span>银行卡管理</span>
@@ -48,7 +54,7 @@
                 <span>业务查询</span>
               </template>
               <h-menu-item name="1-7-1"> <h-icon name="searchfill"></h-icon>交易查询</h-menu-item>
-              <h-menu-item name="1-7-2"> <h-icon name="android-cancel"></h-icon>撤单</h-menu-item>
+              <h-menu-item name="1-7-2"> <h-icon name="android-cancel"></h-icon>撤单申请</h-menu-item>
             </h-submenu>
             <h-menu-item name="1-8">
               <h-icon name="android-people"></h-icon>
@@ -88,14 +94,20 @@ export default {
         this.$router.push({ name: 'Purchase' });
       } else if (name === '1-4-2') {
         this.$router.push({ name: 'Redemption' });
-      } else if (name === '1-5') {
-        this.$router.push({ name: 'AccountSettlement' });
+      } else if (name === '1-5-1') {
+        this.$router.push({ name: 'Settlement-DailyInitiate' });
+      } else if (name === '1-5-2') {
+        this.$router.push({ name: 'Settlement-TransactionConfirm' });
+      } else if (name === '1-5-3') {
+        this.$router.push({ name: 'Settlement-DataOutput' });
+      } else if (name === '1-5-4') {
+        this.$router.push({ name: 'Settlement-SettlementLog' });
       } else if (name === '1-6') {
         this.$router.push({ name: 'BankCardManagement' });
       } else if (name === '1-7-1') {
-        this.$router.push({ name: 'TransactionQuery' });
+        this.$router.push({ name: 'BusinessQuery-TransactionQuery' });
       } else if (name === '1-7-2') {
-        this.$router.push({ name: 'CancelOrder' });
+        this.$router.push({ name: 'BusinessQuery-CancelOrder' });
       } else if (name === '1-8') {
         this.$router.push({ name: 'TeamIntroduction' });
       }

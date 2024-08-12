@@ -24,16 +24,6 @@ export default initRouter(
           component: BankCardManagement,
         },
         {
-          name: 'BusinessQuery',
-          path: 'BusinessQuery',
-          component: BusinessQuery,
-        },
-        {
-          name: 'CancelOrder',
-          path: 'CancelOrder',
-          component: CancelOrder,
-        },
-        {
           name: 'Consult',
           path: 'Consult',
           component: Consult,
@@ -69,9 +59,34 @@ export default initRouter(
           component: TeamIntroduction,
         },
         {
-          name: 'TransactionQuery',
-          path: 'TransactionQuery',
-          component: TransactionQuery,
+          name: 'BusinessQuery-CancelOrder',
+          path: 'BusinessQuery/CancelOrder',
+          component: BusinessQueryCancelOrder,
+        },
+        {
+          name: 'BusinessQuery-TransactionQuery',
+          path: 'BusinessQuery/TransactionQuery',
+          component: BusinessQueryTransactionQuery,
+        },
+        {
+          name: 'Settlement-DailyInitiate',
+          path: 'Settlement/DailyInitiate',
+          component: SettlementDailyInitiate,
+        },
+        {
+          name: 'Settlement-DataOutput',
+          path: 'Settlement/DataOutput',
+          component: SettlementDataOutput,
+        },
+        {
+          name: 'Settlement-SettlementLog',
+          path: 'Settlement/SettlementLog',
+          component: SettlementSettlementLog,
+        },
+        {
+          name: 'Settlement-TransactionConfirm',
+          path: 'Settlement/TransactionConfirm',
+          component: SettlementTransactionConfirm,
         },
         {
           name: '__404__',
@@ -96,14 +111,6 @@ function BankCardManagement() {
   return import(
     /* webpackChunkName: "BankCardManagement" */ '@/views/BankCardManagement.vue'
   )
-}
-function BusinessQuery() {
-  return import(
-    /* webpackChunkName: "BusinessQuery" */ '@/views/BusinessQuery.vue'
-  )
-}
-function CancelOrder() {
-  return import(/* webpackChunkName: "CancelOrder" */ '@/views/CancelOrder.vue')
 }
 function Consult() {
   return import(/* webpackChunkName: "Consult" */ '@/views/Consult.vue')
@@ -132,9 +139,34 @@ function TeamIntroduction() {
     /* webpackChunkName: "TeamIntroduction" */ '@/views/TeamIntroduction.vue'
   )
 }
-function TransactionQuery() {
+function BusinessQueryCancelOrder() {
   return import(
-    /* webpackChunkName: "TransactionQuery" */ '@/views/TransactionQuery.vue'
+    /* webpackChunkName: "BusinessQuery-CancelOrder" */ '@/views/BusinessQuery/CancelOrder.vue'
+  )
+}
+function BusinessQueryTransactionQuery() {
+  return import(
+    /* webpackChunkName: "BusinessQuery-TransactionQuery" */ '@/views/BusinessQuery/TransactionQuery.vue'
+  )
+}
+function SettlementDailyInitiate() {
+  return import(
+    /* webpackChunkName: "Settlement-DailyInitiate" */ '@/views/Settlement/DailyInitiate.vue'
+  )
+}
+function SettlementDataOutput() {
+  return import(
+    /* webpackChunkName: "Settlement-DataOutput" */ '@/views/Settlement/DataOutput.vue'
+  )
+}
+function SettlementSettlementLog() {
+  return import(
+    /* webpackChunkName: "Settlement-SettlementLog" */ '@/views/Settlement/SettlementLog.vue'
+  )
+}
+function SettlementTransactionConfirm() {
+  return import(
+    /* webpackChunkName: "Settlement-TransactionConfirm" */ '@/views/Settlement/TransactionConfirm.vue'
   )
 }
 function __404__() {
