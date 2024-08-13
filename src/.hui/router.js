@@ -42,6 +42,18 @@ export default initRouter(
           name: 'ProductManagement',
           path: 'ProductManagement',
           component: ProductManagement,
+          children: [
+            {
+              name: 'ProductManagement-ProductAdd',
+              path: 'ProductAdd',
+              component: ProductManagementProductAdd,
+            },
+            {
+              name: 'ProductManagement-ProductManage',
+              path: 'ProductManage',
+              component: ProductManagementProductManage,
+            },
+          ],
         },
         {
           name: 'Purchase',
@@ -126,6 +138,16 @@ function Home() {
 function ProductManagement() {
   return import(
     /* webpackChunkName: "ProductManagement" */ '@/views/ProductManagement.vue'
+  )
+}
+function ProductManagementProductAdd() {
+  return import(
+    /* webpackChunkName: "ProductManagement-ProductAdd" */ '@/views/ProductManagement/ProductAdd.vue'
+  )
+}
+function ProductManagementProductManage() {
+  return import(
+    /* webpackChunkName: "ProductManagement-ProductManage" */ '@/views/ProductManagement/ProductManage.vue'
   )
 }
 function Purchase() {

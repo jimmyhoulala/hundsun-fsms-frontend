@@ -14,16 +14,16 @@
                 <h3>团队成员</h3><br />
                 <h4>前端开发</h4><br />
                 <ul>
-                    <li>张三 - 前端工程师</li><br />
-                    <li>李四 - 前端工程师</li><br />
-                    <li>王五 - 前端工程师</li><br />
+                    <li>朱开来 - 前端工程师</li><br />
+                    <li>侯青山 - 前端工程师</li><br />
+                    <li>柏云迪 - 前端工程师</li><br />
                 </ul>
 
                 <h4>后端开发</h4><br />
                 <ul>
-                    <li>赵六 - 后端工程师</li><br />
-                    <li>孙七 - 后端工程师</li><br />
-                    <li>周八 - 后端工程师</li><br />
+                    <li>唐巍祚 - 后端工程师</li><br />
+                    <li>陈语妍 - 后端工程师</li><br />
+                    <li>陈天乐 - 后端工程师</li><br />
                 </ul>
             </div>
 
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import teamlogo from "@/assets/logo.png"
+import teamlogo from "@/assets/team-logo.png"
 export default {
     name: "TeamIntro",
     data() {
@@ -83,6 +83,8 @@ export default {
 .team-info ul {
     list-style-type: none;
     padding-left: 0;
+    margin: 0; 
+    line-height: 1.0; 
 }
 
 .team-info li {
@@ -90,13 +92,16 @@ export default {
 }
 
 .team-logo {
-    width: 50%;
-    height: 50%;
+    width: 60%;
+    height: 60%;
     text-align: center;
+    margin-top: 100px;
+    margin-left: 180px;
 }
 
 .team-logo img {
     max-width: 100%;
     height: auto;
+    transform: scale(1.5);
 }
 </style>

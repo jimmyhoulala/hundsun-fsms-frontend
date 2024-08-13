@@ -27,7 +27,7 @@
                 </h-form-item>
                 <h-form-item label="交易状态">
                     <h-select v-model="searchParams.transaction_state">
-                        <h-option label="未完成" value=0></h-option>
+                        <h-option label="未确认" value=0></h-option>
                         <h-option label="已撤单" value=2></h-option>
                     </h-select>
                 </h-form-item>
@@ -138,7 +138,7 @@ export default {
                     transaction_amount: "10000.00",
                     transaction_date: "2021-11-25",
                     customer_id: "20211117000291",
-                    transaction_state: "未完成",
+                    transaction_state: "未确认",
                 },
                 {
                     transaction_id: "000096",
@@ -148,7 +148,7 @@ export default {
                     transaction_amount: "10000.00",
                     transaction_date: "2021-11-25",
                     customer_id: "20211117000291",
-                    transaction_state: "未完成",
+                    transaction_state: "未确认",
                 },
                 {
                     transaction_id: "000096",
@@ -158,7 +158,7 @@ export default {
                     transaction_amount: "10000.00",
                     transaction_date: "2021-11-25",
                     customer_id: "20211117000291",
-                    transaction_state: "未完成",
+                    transaction_state: "未确认",
                 },
                 {
                     transaction_id: "000096",
@@ -168,7 +168,7 @@ export default {
                     transaction_amount: "10000.00",
                     transaction_date: "2021-11-25",
                     customer_id: "20211117000291",
-                    transaction_state: "未完成",
+                    transaction_state: "未确认",
                 },
                 {
                     transaction_id: "000096",
@@ -178,7 +178,7 @@ export default {
                     transaction_amount: "10000.00",
                     transaction_date: "2021-11-25",
                     customer_id: "20211117000291",
-                    transaction_state: "未完成",
+                    transaction_state: "未确认",
                 },
                 {
                     transaction_id: "000096",
@@ -188,7 +188,7 @@ export default {
                     transaction_amount: "10000.00",
                     transaction_date: "2021-11-25",
                     customer_id: "20211117000291",
-                    transaction_state: "未完成",
+                    transaction_state: "未确认",
                 },
                 {
                     transaction_id: "000096",
@@ -198,7 +198,7 @@ export default {
                     transaction_amount: "10000.00",
                     transaction_date: "2021-11-25",
                     customer_id: "20211117000291",
-                    transaction_state: "未完成",
+                    transaction_state: "未确认",
                 },
                 {
                     transaction_id: "000096",
@@ -208,7 +208,7 @@ export default {
                     transaction_amount: "10000.00",
                     transaction_date: "2021-11-25",
                     customer_id: "20211117000291",
-                    transaction_state: "未完成",
+                    transaction_state: "未确认",
                 },
                 {
                     transaction_id: "000096",
@@ -218,7 +218,7 @@ export default {
                     transaction_amount: "10000.00",
                     transaction_date: "2021-11-25",
                     customer_id: "20211117000291",
-                    transaction_state: "未完成",
+                    transaction_state: "未确认",
                 },
                 {
                     transaction_id: "000096",
@@ -228,7 +228,7 @@ export default {
                     transaction_amount: "10000.00",
                     transaction_date: "2021-11-25",
                     customer_id: "20211117000291",
-                    transaction_state: "未完成",
+                    transaction_state: "未确认",
                 },
                 {
                     transaction_id: "000096",
@@ -238,7 +238,7 @@ export default {
                     transaction_amount: "10000.00",
                     transaction_date: "2021-11-25",
                     customer_id: "20211117000291",
-                    transaction_state: "未完成",
+                    transaction_state: "未确认",
                 },
                 {
                     transaction_id: "000096",
@@ -248,7 +248,7 @@ export default {
                     transaction_amount: "10000.00",
                     transaction_date: "2021-11-25",
                     customer_id: "20211117000291",
-                    transaction_state: "未完成",
+                    transaction_state: "未确认",
                 },
                 {
                     transaction_id: "000096",
@@ -258,7 +258,7 @@ export default {
                     transaction_amount: "10000.00",
                     transaction_date: "2021-11-25",
                     customer_id: "20211117000291",
-                    transaction_state: "未完成",
+                    transaction_state: "未确认",
                 }, {
                     transaction_id: "000096",
                     account_id: "930000000096",
@@ -267,7 +267,7 @@ export default {
                     transaction_amount: "10000.00",
                     transaction_date: "2021-11-25",
                     customer_id: "20211117000291",
-                    transaction_state: "未完成",
+                    transaction_state: "未确认",
                 },
                 {
                     transaction_id: "000096",
@@ -277,7 +277,7 @@ export default {
                     transaction_amount: "10000.00",
                     transaction_date: "2021-11-25",
                     customer_id: "20211117000291",
-                    transaction_state: "未完成",
+                    transaction_state: "未确认",
                 },
                 {
                     transaction_id: "000096",
@@ -287,7 +287,7 @@ export default {
                     transaction_amount: "10000.00",
                     transaction_date: "2021-11-25",
                     customer_id: "20211117000291",
-                    transaction_state: "未完成",
+                    transaction_state: "未确认",
                 },
                 {
                     transaction_id: "000096",
@@ -297,7 +297,7 @@ export default {
                     transaction_amount: "10000.00",
                     transaction_date: "2021-11-25",
                     customer_id: "20211117000291",
-                    transaction_state: "未完成",
+                    transaction_state: "未确认",
                 },
 
                 // 其他订单...

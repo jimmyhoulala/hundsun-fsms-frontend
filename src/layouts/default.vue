@@ -22,10 +22,14 @@
               <h-icon name="t-b-account"></h-icon>
               <span>账户开户</span>
             </h-menu-item>
-            <h-menu-item name="1-3">
-              <h-icon name="ios-list"></h-icon>
-              <span>产品管理</span>
-            </h-menu-item>
+            <h-submenu name="1-3">
+              <template slot="title">
+                <h-icon name="ios-list"></h-icon>
+                <span>产品管理</span>
+              </template>
+              <h-menu-item name="1-3-1"> <h-icon name="ios-paper-outline"></h-icon>管理已有产品</h-menu-item>
+              <h-menu-item name="1-3-2"> <h-icon name="addition_fill"></h-icon>新增产品</h-menu-item>
+            </h-submenu>
             <h-submenu name="1-4">
               <template slot="title">
                 <h-icon name="financial_fill"></h-icon>
@@ -88,8 +92,10 @@ export default {
         this.$router.push({ name: 'Home' });
       } else if (name === '1-2') {
         this.$router.push({ name: 'CreateAccount' });
-      } else if (name === '1-3') {
-        this.$router.push({ name: 'ProductManagement' });
+      } else if (name === '1-3-1') {
+        this.$router.push({ name: 'ProductManagement-ProductManage' });
+      } else if (name === '1-3-2') {
+        this.$router.push({ name: 'ProductManagement-ProductAdd' });
       } else if (name === '1-4-1') {
         this.$router.push({ name: 'Purchase' });
       } else if (name === '1-4-2') {
