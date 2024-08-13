@@ -83,8 +83,8 @@ export default {
 .team-info ul {
     list-style-type: none;
     padding-left: 0;
-    margin: 0; 
-    line-height: 1.0; 
+    margin: 0;
+    line-height: 1.0;
 }
 
 .team-info li {
