@@ -72,7 +72,7 @@
                             <p slot="title">宣传</p>
                             <ul class="quick-links">
                                 <li><a href="#">公司主页</a></li>
-                                <li><a href="#">团队介绍</a></li>
+                                <li><router-link to="/TeamIntroduction">团队介绍</router-link></li>
                                 <li><a href="#">项目说明</a></li>
                                 <li><a href="#">HUI文档</a></li>
                             </ul>
