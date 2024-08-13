@@ -12,8 +12,9 @@
       </div>
       <h-row>
         <h-col :span=3>
-          <h-menu ref="menu" theme="dark" active-name="activeName" :open-names="['1']" :collapse="isCollapse === 'true'"
-            style="width:100%;height:calc(100vh - 60px);" @on-select="handleSelect">
+          <h-menu ref="menu" theme="dark" active-name="activeName" :open-names=openNames
+            :collapse="isCollapse === 'true'" style="width:100%;height:calc(100vh - 60px);overflow-y: hidden;"
+            @on-select="handleSelect" :accordion="true">
             <h-menu-item name="1-1">
               <h-icon name="home"></h-icon>
               <span>平台主页</span>
@@ -80,6 +81,7 @@ import minilogo from "@/assets/mini-logo.png"
 export default {
   data() {
     return {
+      openNames: ['1'],
       isCollapse: "false",
       minilogo,
       activeName: '1-1',
@@ -93,26 +95,36 @@ export default {
       } else if (name === '1-2') {
         this.$router.push({ name: 'CreateAccount' });
       } else if (name === '1-3-1') {
+        this.openNames = ['1-3']
         this.$router.push({ name: 'ProductManagement-ProductManage' });
       } else if (name === '1-3-2') {
+        this.openNames = ['1-3']
         this.$router.push({ name: 'ProductManagement-ProductAdd' });
       } else if (name === '1-4-1') {
+        this.openNames = ['1-4']
         this.$router.push({ name: 'Purchase' });
       } else if (name === '1-4-2') {
+        this.openNames = ['1-4']
         this.$router.push({ name: 'Redemption' });
       } else if (name === '1-5-1') {
+        this.openNames = ['1-5']
         this.$router.push({ name: 'Settlement-DailyInitiate' });
       } else if (name === '1-5-2') {
+        this.openNames = ['1-5']
         this.$router.push({ name: 'Settlement-TransactionConfirm' });
       } else if (name === '1-5-3') {
+        this.openNames = ['1-5']
         this.$router.push({ name: 'Settlement-DataOutput' });
       } else if (name === '1-5-4') {
+        this.openNames = ['1-5']
         this.$router.push({ name: 'Settlement-SettlementLog' });
       } else if (name === '1-6') {
         this.$router.push({ name: 'BankCardManagement' });
       } else if (name === '1-7-1') {
+        this.openNames = ['1-7']
         this.$router.push({ name: 'BusinessQuery-TransactionQuery' });
       } else if (name === '1-7-2') {
+        this.openNames = ['1-7']
         this.$router.push({ name: 'BusinessQuery-CancelOrder' });
       } else if (name === '1-8') {
         this.$router.push({ name: 'TeamIntroduction' });
