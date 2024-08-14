@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "@hsui/plugin-lint": "^1.0.0",
-    "@hsui/plugin-micro-app": "^1.8.6",
+    "@hsui/plugin-micro-app": "^1.9.0",
     "vue-particles": "^1.0.9"
   }
 }
