@@ -4,16 +4,10 @@
         <h-carousel v-model="value3" :autoplay="setting.autoplay" :autoplay-speed="setting.autoplaySpeed"
             :dots="setting.dots" :trigger="setting.trigger" :arrow="setting.arrow">
             <h-carouselitem>
-                <div class="demo-carousel">1</div>
+                <div class="demo-carousel">理财销售交易系统</div>
             </h-carouselitem>
             <h-carouselitem>
-                <div class="demo-carousel">2</div>
-            </h-carouselitem>
-            <h-carouselitem>
-                <div class="demo-carousel">3</div>
-            </h-carouselitem>
-            <h-carouselitem>
-                <div class="demo-carousel">4</div>
+                <div class="demo-carousel">第三小组</div>
             </h-carouselitem>
         </h-carousel>
 
@@ -71,10 +65,11 @@
                         <h-card style="margin-top: 3px;">
                             <p slot="title">宣传</p>
                             <ul class="quick-links">
-                                <li><a href="#">公司主页</a></li>
                                 <li><a href="/#/TeamIntroduction">团队介绍</a></li>
-                                <li><a href="#">项目说明</a></li>
-                                <li><a href="#">HUI文档</a></li>
+                                <li><a href="https://www.hundsun.com/" target="_blank">公司主页</a></li>
+                                <li><a href="https://newyouthoption.hundsun.com/fintech/#/article?id=214"
+                                        target="_blank">项目说明</a></li>
+                                <li><a href="https://hui.hs.net/r/cms/www/itn/hui-open/" target="_blank">HUI文档</a></li>
                             </ul>
                         </h-card>
                     </h-card>

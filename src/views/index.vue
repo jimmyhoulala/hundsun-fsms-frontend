@@ -24,6 +24,9 @@
               录</h-button>
           </h-form-item>
         </h-form>
+        <div style="text-align: right;font-family:'SimHei;">
+          <span><a href="/#/Register">管理员注册</a></span>
+        </div>
       </div>
     </div>
   </div>
@@ -52,6 +55,7 @@ export default {
   },
   methods: {
     login() {
+      this.$hMessage.success("登陆成功");
       this.$router.push({ name: 'Home' });
       /*             this.$refs['formRef'].validate((valid) => {
                       if (valid) {

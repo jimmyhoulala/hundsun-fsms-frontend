@@ -131,7 +131,7 @@ export default {
       }
     },
     updateLayout() {
-      const noLayoutRoutes = ['index']; // 不需要布局的路由名称
+      const noLayoutRoutes = ['index', 'Register']; // 不需要布局的路由名称
       const currentRouteName = this.$route.name;
       this.showLayout = !noLayoutRoutes.includes(currentRouteName);
     }

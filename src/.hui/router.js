@@ -49,6 +49,11 @@ export default initRouter(
           component: Redemption,
         },
         {
+          name: 'Register',
+          path: 'Register',
+          component: Register,
+        },
+        {
           name: 'TeamIntroduction',
           path: 'TeamIntroduction',
           component: TeamIntroduction,
@@ -133,6 +138,9 @@ function Purchase() {
 }
 function Redemption() {
   return import(/* webpackChunkName: "Redemption" */ '@/views/Redemption.vue')
+}
+function Register() {
+  return import(/* webpackChunkName: "Register" */ '@/views/Register.vue')
 }
 function TeamIntroduction() {
   return import(
