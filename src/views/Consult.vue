@@ -221,7 +221,7 @@ export default {
     destroyed() { },
 };
 </script>
-<style>
+<style lang='scss'>
 .box {
     margin-left: 100px;
     margin-right: 100px;
