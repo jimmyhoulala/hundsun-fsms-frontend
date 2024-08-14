@@ -39,23 +39,6 @@ export default initRouter(
           component: Home,
         },
         {
-          name: 'ProductManagement',
-          path: 'ProductManagement',
-          component: ProductManagement,
-          children: [
-            {
-              name: 'ProductManagement-ProductAdd',
-              path: 'ProductAdd',
-              component: ProductManagementProductAdd,
-            },
-            {
-              name: 'ProductManagement-ProductManage',
-              path: 'ProductManage',
-              component: ProductManagementProductManage,
-            },
-          ],
-        },
-        {
           name: 'Purchase',
           path: 'Purchase',
           component: Purchase,
@@ -79,6 +62,16 @@ export default initRouter(
           name: 'BusinessQuery-TransactionQuery',
           path: 'BusinessQuery/TransactionQuery',
           component: BusinessQueryTransactionQuery,
+        },
+        {
+          name: 'ProductManagement-ProductAdd',
+          path: 'ProductManagement/ProductAdd',
+          component: ProductManagementProductAdd,
+        },
+        {
+          name: 'ProductManagement-ProductManage',
+          path: 'ProductManagement/ProductManage',
+          component: ProductManagementProductManage,
         },
         {
           name: 'Settlement-DailyInitiate',
@@ -135,21 +128,6 @@ function CreateAccount() {
 function Home() {
   return import(/* webpackChunkName: "Home" */ '@/views/Home.vue')
 }
-function ProductManagement() {
-  return import(
-    /* webpackChunkName: "ProductManagement" */ '@/views/ProductManagement.vue'
-  )
-}
-function ProductManagementProductAdd() {
-  return import(
-    /* webpackChunkName: "ProductManagement-ProductAdd" */ '@/views/ProductManagement/ProductAdd.vue'
-  )
-}
-function ProductManagementProductManage() {
-  return import(
-    /* webpackChunkName: "ProductManagement-ProductManage" */ '@/views/ProductManagement/ProductManage.vue'
-  )
-}
 function Purchase() {
   return import(/* webpackChunkName: "Purchase" */ '@/views/Purchase.vue')
 }
@@ -169,6 +147,16 @@ function BusinessQueryCancelOrder() {
 function BusinessQueryTransactionQuery() {
   return import(
     /* webpackChunkName: "BusinessQuery-TransactionQuery" */ '@/views/BusinessQuery/TransactionQuery.vue'
+  )
+}
+function ProductManagementProductAdd() {
+  return import(
+    /* webpackChunkName: "ProductManagement-ProductAdd" */ '@/views/ProductManagement/ProductAdd.vue'
+  )
+}
+function ProductManagementProductManage() {
+  return import(
+    /* webpackChunkName: "ProductManagement-ProductManage" */ '@/views/ProductManagement/ProductManage.vue'
   )
 }
 function SettlementDailyInitiate() {

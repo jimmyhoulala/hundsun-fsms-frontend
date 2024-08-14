@@ -86,27 +86,27 @@
                     <h-card :bordered="true" style="border-radius: 10px" dis-hover>
                         <p slot="title">快速导航</p>
                         <div class="grid-container">
-                            <div class="grid-item" @click="navigateTo('account-opening')">
+                            <div class="grid-item" @click="navigate('CreateAccount')">
                                 <h-icon name="t-b-organization"></h-icon>
                                 账户开户
                             </div>
-                            <div class="grid-item" @click="navigateTo('product-management')">
+                            <div class="grid-item" @click="navigate('/ProductManagement/ProductManage')">
                                 <h-icon name="manage"></h-icon>
                                 产品管理
                             </div>
-                            <div class="grid-item" @click="navigateTo('product-subscription')">
+                            <div class="grid-item" @click="navigate('Purchase')">
                                 <h-icon name="android-add"></h-icon>
                                 产品申购
                             </div>
-                            <div class="grid-item" @click="navigateTo('product-redemption')">
+                            <div class="grid-item" @click="navigate('Redemption')">
                                 <h-icon name="minus-round"></h-icon>
                                 产品赎回
                             </div>
-                            <div class="grid-item" @click="navigateTo('transaction-confirmation')">
+                            <div class="grid-item" @click="navigate('/Settlement/TransactionConfirm')">
                                 <h-icon name="android-done-all"></h-icon>
                                 交易确认
                             </div>
-                            <div class="grid-item" @click="navigateTo('transaction-inquiry')">
+                            <div class="grid-item" @click="navigate('/BusinessQuery/TransactionQuery')">
                                 <h-icon name="search"></h-icon>
                                 交易查询
                             </div>
@@ -157,9 +157,9 @@ export default {
         updateTime() {
             this.currentTime = new Date().toLocaleString();
         },
-        navigateTo(routeName) {
-            this.$router.push({ name: routeName });
-        }
+        navigate(dest) {
+            this.$router.push(dest)
+        },
     },
 };
 </script>

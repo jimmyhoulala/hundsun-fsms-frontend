@@ -12,7 +12,7 @@
       </div>
       <h-row>
         <h-col :span=3>
-          <h-menu ref="menu" theme="dark" active-name="activeName" :open-names=openNames
+          <h-menu ref="menus" theme="dark" active-name="activeName" :open-names=openNames
             :collapse="isCollapse === 'true'" style="width:100%;height:calc(100vh - 60px);overflow-y: hidden;"
             @on-select="handleSelect" :accordion="true">
             <h-menu-item name="1-1">
@@ -138,7 +138,7 @@ export default {
   },
   mounted() {
     this.updateLayout();
-    this.$router.afterEach(() => {
+    this.$router.afterEach((to) => {
       this.updateLayout();
     });
   },
