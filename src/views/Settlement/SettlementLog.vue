@@ -152,6 +152,7 @@ export default {
 
 <style scoped>
 .settlement-log {
+    margin: 10px;
     padding: 20px;
     background-color: #ffffff;
     border: 1px solid #ccc;

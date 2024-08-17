@@ -74,6 +74,11 @@ export default initRouter(
           component: ProductManagementProductAdd,
         },
         {
+          name: 'ProductManagement-ProductDetails',
+          path: 'ProductManagement/ProductDetails',
+          component: ProductManagementProductDetails,
+        },
+        {
           name: 'ProductManagement-ProductManage',
           path: 'ProductManagement/ProductManage',
           component: ProductManagementProductManage,
@@ -160,6 +165,11 @@ function BusinessQueryTransactionQuery() {
 function ProductManagementProductAdd() {
   return import(
     /* webpackChunkName: "ProductManagement-ProductAdd" */ '@/views/ProductManagement/ProductAdd.vue'
+  )
+}
+function ProductManagementProductDetails() {
+  return import(
+    /* webpackChunkName: "ProductManagement-ProductDetails" */ '@/views/ProductManagement/ProductDetails.vue'
   )
 }
 function ProductManagementProductManage() {
