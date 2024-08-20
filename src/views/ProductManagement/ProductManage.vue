@@ -88,7 +88,7 @@ export default {
                 {
                     title: "操作",
                     key: "action",
-                    width: 150,
+                    width: 200,
                     fixed: "right",
                     render: (h, params) => {
                         return h("div", [
@@ -105,15 +105,32 @@ export default {
                                         },
                                     },
                                 },
-                                "查看详细信息"
+                                "查看/编辑详细信息"
+                            ),
+                            h(
+                                "Button",
+                                {
+                                    props: {
+                                        type: "error",
+                                        size: "small",
+                                    },
+                                    style: {
+                                        marginLeft: '10px',
+                                    },
+                                    on: {
+                                        click: () => {
+                                            this.confirmDelete(params.row);
+                                        },
+                                    },
+                                },
+                                "删除"
                             ),
                         ]);
                     },
                 },
-
             ],
             products: [],
-            pageSize: 10,
+            pageSize: 9,
             currentPage: 1,
         };
     },
@@ -127,31 +144,30 @@ export default {
                     fund_id: "001",
                     fund_name: "稳健成长基金",
                     fund_type: "股票型",
-                    fund_risk_level: 3,  // 中风险
-                    fund_state: 1,  // 正常
+                    fund_risk_level: 3,  
+                    fund_state: 1,  
                 },
                 {
                     fund_id: "002",
                     fund_name: "保守收益基金",
                     fund_type: "债券型",
-                    fund_risk_level: 1,  // 低风险
-                    fund_state: 1,  // 正常
+                    fund_risk_level: 1,  
+                    fund_state: 1,  
                 },
                 {
                     fund_id: "003",
                     fund_name: "高增长基金",
                     fund_type: "混合型",
-                    fund_risk_level: 5,  // 高风险
-                    fund_state: 2,  // 暂停
+                    fund_risk_level: 5, 
+                    fund_state: 2,  
                 },
                 {
                     fund_id: "004",
                     fund_name: "稳定收益基金",
                     fund_type: "货币型",
-                    fund_risk_level: 2,  // 中低风险
-                    fund_state: 1,  // 正常
+                    fund_risk_level: 2, 
+                    fund_state: 1,  
                 },
-                // 更多产品数据...
             ];
         },
         onSearch() {
@@ -169,9 +185,26 @@ export default {
         },
         viewDetails(product) {
             // 实现查看详细信息逻辑
-            console.log("查看产品详细信息:", product);
-            // 这里可以跳转到产品详细信息页面
+            console.log("查看/编辑产品详细信息:", product);
             this.$router.push({ name: 'ProductManagement-ProductDetails', query: { fund_id: product.fund_id } });
+        },
+        confirmDelete(product) {
+            this.$hMsgBox.confirm({
+                title: "删除确认",
+                content: `<p>确定要删除产品 <b>${product.fund_name}</b> 吗？</p>`,
+                onOk: () => {
+                    this.deleteProduct(product);
+                },
+                onCancel: () => {
+                    this.$hMessage.info("取消删除");
+                },
+            });
+        },
+        deleteProduct(product) {
+            // 实现删除产品逻辑
+            this.products = this.products.filter(p => p.fund_id !== product.fund_id);
+            this.$hMessage.info(`产品 ${product.fund_name} 已删除`);
+            console.log("删除产品:", product.fund_id);
         },
         handlePageChange(page) {
             this.currentPage = page;
@@ -209,6 +242,6 @@ h3 {
 }
 
 .product-table {
-    margin-top: -60px;  /* 表格向上移动10px */
+    margin-top: -60px;  
 }
 </style>

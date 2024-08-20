@@ -119,7 +119,6 @@ export default {
     },
     created() {
         this.modal1 = false
-        console.log(this.pageSize)
         this.loadOrders();
     },
     methods: {
