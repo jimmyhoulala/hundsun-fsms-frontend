@@ -19,11 +19,6 @@ export default initRouter(
           component: AccountSettlement,
         },
         {
-          name: 'BankCardManagement',
-          path: 'BankCardManagement',
-          component: BankCardManagement,
-        },
-        {
           name: 'Consult',
           path: 'Consult',
           component: Consult,
@@ -57,6 +52,11 @@ export default initRouter(
           name: 'TeamIntroduction',
           path: 'TeamIntroduction',
           component: TeamIntroduction,
+        },
+        {
+          name: 'BankCardManagement-BankCardManagement',
+          path: 'BankCardManagement/BankCardManagement',
+          component: BankCardManagementBankCardManagement,
         },
         {
           name: 'BusinessQuery-CancelOrder',
@@ -122,11 +122,6 @@ function AccountSettlement() {
     /* webpackChunkName: "AccountSettlement" */ '@/views/AccountSettlement.vue'
   )
 }
-function BankCardManagement() {
-  return import(
-    /* webpackChunkName: "BankCardManagement" */ '@/views/BankCardManagement.vue'
-  )
-}
 function Consult() {
   return import(/* webpackChunkName: "Consult" */ '@/views/Consult.vue')
 }
@@ -150,6 +145,11 @@ function Register() {
 function TeamIntroduction() {
   return import(
     /* webpackChunkName: "TeamIntroduction" */ '@/views/TeamIntroduction.vue'
+  )
+}
+function BankCardManagementBankCardManagement() {
+  return import(
+    /* webpackChunkName: "BankCardManagement-BankCardManagement" */ '@/views/BankCardManagement/BankCardManagement.vue'
   )
 }
 function BusinessQueryCancelOrder() {
