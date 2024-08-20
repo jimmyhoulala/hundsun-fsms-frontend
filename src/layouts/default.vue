@@ -19,10 +19,15 @@
               <h-icon name="home"></h-icon>
               <span>平台主页</span>
             </h-menu-item>
-            <h-menu-item name="1-2">
-              <h-icon name="t-b-account"></h-icon>
-              <span>账户开户</span>
-            </h-menu-item>
+            <h-submenu name="1-2">
+              <template slot="title">
+                <h-icon name="t-b-account"></h-icon>
+                <span>账户管理</span>
+              </template>
+              <h-menu-item name="1-2-1"> <h-icon name="ios-paper-outline"></h-icon>用户列表</h-menu-item>
+              <h-menu-item name="1-2-2"> <h-icon name="addition_fill"></h-icon>开户</h-menu-item>
+              <h-menu-item name="1-2-3"> <h-icon name="card"></h-icon>银行卡管理</h-menu-item>
+            </h-submenu>
             <h-submenu name="1-3">
               <template slot="title">
                 <h-icon name="ios-list"></h-icon>
@@ -49,19 +54,15 @@
               <h-menu-item name="1-5-3"> <h-icon name="printer"></h-icon>数据导出</h-menu-item>
               <h-menu-item name="1-5-4"> <h-icon name="ios-paper-outline"></h-icon>日志查询</h-menu-item>
             </h-submenu>
-            <h-menu-item name="1-6">
-              <h-icon name="card"></h-icon>
-              <span>银行卡管理</span>
-            </h-menu-item>
-            <h-submenu name="1-7">
+            <h-submenu name="1-6">
               <template slot="title">
                 <h-icon name="search"></h-icon>
                 <span>业务查询</span>
               </template>
-              <h-menu-item name="1-7-1"> <h-icon name="searchfill"></h-icon>交易查询</h-menu-item>
-              <h-menu-item name="1-7-2"> <h-icon name="android-cancel"></h-icon>撤单申请</h-menu-item>
+              <h-menu-item name="1-6-1"> <h-icon name="searchfill"></h-icon>交易查询</h-menu-item>
+              <h-menu-item name="1-6-2"> <h-icon name="android-cancel"></h-icon>撤单申请</h-menu-item>
             </h-submenu>
-            <h-menu-item name="1-8">
+            <h-menu-item name="1-7">
               <h-icon name="android-people"></h-icon>
               <span>团队介绍</span>
             </h-menu-item>
@@ -92,8 +93,15 @@ export default {
     handleSelect(name) {
       if (name === '1-1') {
         this.$router.push({ name: 'Home' });
-      } else if (name === '1-2') {
-        this.$router.push({ name: 'CreateAccount' });
+      } else if (name === '1-2-1') {
+        this.openNames = ['1-2']
+        this.$router.push({ name: 'AccountManagement-CustomerList' });
+      } else if (name === '1-2-2') {
+        this.openNames = ['1-2']
+        this.$router.push({ name: 'AccountManagement-AccountSettlement' });
+      } else if (name === '1-2-3') {
+        this.openNames = ['1-2']
+        this.$router.push({ name: 'AccountManagement-BankCardManagement' });
       } else if (name === '1-3-1') {
         this.openNames = ['1-3']
         this.$router.push({ name: 'ProductManagement-ProductManage' });
@@ -118,15 +126,13 @@ export default {
       } else if (name === '1-5-4') {
         this.openNames = ['1-5']
         this.$router.push({ name: 'Settlement-SettlementLog' });
-      } else if (name === '1-6') {
-        this.$router.push({ name: 'BankCardManagement-BankCardManagement' });
-      } else if (name === '1-7-1') {
-        this.openNames = ['1-7']
+      } else if (name === '1-6-1') {
+        this.openNames = ['1-6']
         this.$router.push({ name: 'BusinessQuery-TransactionQuery' });
-      } else if (name === '1-7-2') {
-        this.openNames = ['1-7']
+      } else if (name === '1-6-2') {
+        this.openNames = ['1-6']
         this.$router.push({ name: 'BusinessQuery-CancelOrder' });
-      } else if (name === '1-8') {
+      } else if (name === '1-7') {
         this.$router.push({ name: 'TeamIntroduction' });
       }
     },

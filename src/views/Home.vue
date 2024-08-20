@@ -81,9 +81,9 @@
                     <h-card :bordered="true" style="border-radius: 10px" dis-hover>
                         <p slot="title">快速导航</p>
                         <div class="grid-container">
-                            <div class="grid-item" @click="navigate('CreateAccount')">
+                            <div class="grid-item" @click="navigate('/AccountManagement/CustomerList')">
                                 <h-icon name="t-b-organization"></h-icon>
-                                账户开户
+                                账户管理
                             </div>
                             <div class="grid-item" @click="navigate('/ProductManagement/ProductManage')">
                                 <h-icon name="manage"></h-icon>
