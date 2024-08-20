@@ -19,11 +19,6 @@ export default initRouter(
           component: AccountSettlement,
         },
         {
-          name: 'BankCardManagement',
-          path: 'BankCardManagement',
-          component: BankCardManagement,
-        },
-        {
           name: 'Consult',
           path: 'Consult',
           component: Consult,
@@ -59,6 +54,11 @@ export default initRouter(
           component: TeamIntroduction,
         },
         {
+          name: 'BankCardManagement-BankCardManagement',
+          path: 'BankCardManagement/BankCardManagement',
+          component: BankCardManagementBankCardManagement,
+        },
+        {
           name: 'BusinessQuery-CancelOrder',
           path: 'BusinessQuery/CancelOrder',
           component: BusinessQueryCancelOrder,
@@ -72,6 +72,11 @@ export default initRouter(
           name: 'ProductManagement-ProductAdd',
           path: 'ProductManagement/ProductAdd',
           component: ProductManagementProductAdd,
+        },
+        {
+          name: 'ProductManagement-ProductDetails',
+          path: 'ProductManagement/ProductDetails',
+          component: ProductManagementProductDetails,
         },
         {
           name: 'ProductManagement-ProductManage',
@@ -117,11 +122,6 @@ function AccountSettlement() {
     /* webpackChunkName: "AccountSettlement" */ '@/views/AccountSettlement.vue'
   )
 }
-function BankCardManagement() {
-  return import(
-    /* webpackChunkName: "BankCardManagement" */ '@/views/BankCardManagement.vue'
-  )
-}
 function Consult() {
   return import(/* webpackChunkName: "Consult" */ '@/views/Consult.vue')
 }
@@ -147,6 +147,11 @@ function TeamIntroduction() {
     /* webpackChunkName: "TeamIntroduction" */ '@/views/TeamIntroduction.vue'
   )
 }
+function BankCardManagementBankCardManagement() {
+  return import(
+    /* webpackChunkName: "BankCardManagement-BankCardManagement" */ '@/views/BankCardManagement/BankCardManagement.vue'
+  )
+}
 function BusinessQueryCancelOrder() {
   return import(
     /* webpackChunkName: "BusinessQuery-CancelOrder" */ '@/views/BusinessQuery/CancelOrder.vue'
@@ -160,6 +165,11 @@ function BusinessQueryTransactionQuery() {
 function ProductManagementProductAdd() {
   return import(
     /* webpackChunkName: "ProductManagement-ProductAdd" */ '@/views/ProductManagement/ProductAdd.vue'
+  )
+}
+function ProductManagementProductDetails() {
+  return import(
+    /* webpackChunkName: "ProductManagement-ProductDetails" */ '@/views/ProductManagement/ProductDetails.vue'
   )
 }
 function ProductManagementProductManage() {

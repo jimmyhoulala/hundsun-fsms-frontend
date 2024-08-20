@@ -119,7 +119,7 @@ export default {
         this.openNames = ['1-5']
         this.$router.push({ name: 'Settlement-SettlementLog' });
       } else if (name === '1-6') {
-        this.$router.push({ name: 'BankCardManagement' });
+        this.$router.push({ name: 'BankCardManagement-BankCardManagement' });
       } else if (name === '1-7-1') {
         this.openNames = ['1-7']
         this.$router.push({ name: 'BusinessQuery-TransactionQuery' });
