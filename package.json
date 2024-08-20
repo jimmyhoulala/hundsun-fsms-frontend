@@ -6,6 +6,7 @@
     "@hsui/core": "^1.6.1",
     "@vue/shared": "^3.4.35",
     "element": "^0.1.4",
+    "element-ui": "^2.15.14",
     "h_ui": "^1.48.0"
   },
   "devDependencies": {
