@@ -154,7 +154,7 @@ export default {
                     },
                     on: {
                     click: () => {
-                        this.$router.push({ name: 'RiskAssessment', query: { account_id: params.row.account_id } });
+                        this.$router.push({ name: 'AccountManagement-RisklevelTest', query: { account_id: params.row.account_id } });
                     },
                     },
                 },
