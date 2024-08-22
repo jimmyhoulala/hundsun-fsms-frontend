@@ -54,9 +54,34 @@ export default initRouter(
           component: TeamIntroduction,
         },
         {
-          name: 'BankCardManagement-BankCardManagement',
-          path: 'BankCardManagement/BankCardManagement',
-          component: BankCardManagementBankCardManagement,
+          name: 'AccountManagement-AccountSettlement',
+          path: 'AccountManagement/AccountSettlement',
+          component: AccountManagementAccountSettlement,
+        },
+        {
+          name: 'AccountManagement-AddCreditcard',
+          path: 'AccountManagement/AddCreditcard',
+          component: AccountManagementAddCreditcard,
+        },
+        {
+          name: 'AccountManagement-BankCardManagement',
+          path: 'AccountManagement/BankCardManagement',
+          component: AccountManagementBankCardManagement,
+        },
+        {
+          name: 'AccountManagement-CustomerDetails',
+          path: 'AccountManagement/CustomerDetails',
+          component: AccountManagementCustomerDetails,
+        },
+        {
+          name: 'AccountManagement-CustomerList',
+          path: 'AccountManagement/CustomerList',
+          component: AccountManagementCustomerList,
+        },
+        {
+          name: 'AccountManagement-RisklevelTest',
+          path: 'AccountManagement/RisklevelTest',
+          component: AccountManagementRisklevelTest,
         },
         {
           name: 'BusinessQuery-CancelOrder',
@@ -147,9 +172,34 @@ function TeamIntroduction() {
     /* webpackChunkName: "TeamIntroduction" */ '@/views/TeamIntroduction.vue'
   )
 }
-function BankCardManagementBankCardManagement() {
+function AccountManagementAccountSettlement() {
   return import(
-    /* webpackChunkName: "BankCardManagement-BankCardManagement" */ '@/views/BankCardManagement/BankCardManagement.vue'
+    /* webpackChunkName: "AccountManagement-AccountSettlement" */ '@/views/AccountManagement/AccountSettlement.vue'
+  )
+}
+function AccountManagementAddCreditcard() {
+  return import(
+    /* webpackChunkName: "AccountManagement-AddCreditcard" */ '@/views/AccountManagement/AddCreditcard.vue'
+  )
+}
+function AccountManagementBankCardManagement() {
+  return import(
+    /* webpackChunkName: "AccountManagement-BankCardManagement" */ '@/views/AccountManagement/BankCardManagement.vue'
+  )
+}
+function AccountManagementCustomerDetails() {
+  return import(
+    /* webpackChunkName: "AccountManagement-CustomerDetails" */ '@/views/AccountManagement/CustomerDetails.vue'
+  )
+}
+function AccountManagementCustomerList() {
+  return import(
+    /* webpackChunkName: "AccountManagement-CustomerList" */ '@/views/AccountManagement/CustomerList.vue'
+  )
+}
+function AccountManagementRisklevelTest() {
+  return import(
+    /* webpackChunkName: "AccountManagement-RisklevelTest" */ '@/views/AccountManagement/RisklevelTest.vue'
   )
 }
 function BusinessQueryCancelOrder() {
