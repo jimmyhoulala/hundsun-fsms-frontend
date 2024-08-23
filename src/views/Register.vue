@@ -12,8 +12,8 @@
                     style="text-align: center; font-size: 28px; margin-bottom: 20px; color: #333;font-family:'SimHei;user-select: none;">
                     恒生理财销售交易系统</div>
                 <h-form :model="form" :rules="rules" ref="formRef">
-                    <h-form-item prop="username">
-                        <h-input icon="t-b-userallocation" placeholder="请输入账号" v-model="form.username"
+                    <h-form-item prop="userName">
+                        <h-input icon="t-b-userallocation" placeholder="请输入账号" v-model="form.userName"
                             size="large"></h-input>
                     </h-form-item>
                     <h-form-item prop="password">
@@ -24,8 +24,9 @@
                         <h-input icon="t-b-password" placeholder="请确认密码" show-password v-model="form.confirmPassword"
                             size="large"></h-input>
                     </h-form-item>
-                    <h-form-item prop="contact">
-                        <h-input icon="t-b-phone" placeholder="请输入联系方式" v-model="form.contact" size="large"></h-input>
+                    <h-form-item prop="userContact">
+                        <h-input icon="t-b-phone" placeholder="请输入联系方式" v-model="form.userContact"
+                            size="large"></h-input>
                     </h-form-item>
                     <h-form-item>
                         <h-button type="ghost" shape="circle"
@@ -47,13 +48,13 @@ export default {
         return {
             logo,
             form: {
-                username: '',
+                userName: '',
                 password: '',
                 confirmPassword: '',
-                contact: ''
+                userContact: ''
             },
             rules: {
-                username: [
+                userName: [
                     { required: false, message: '请输入账号', trigger: 'blur' },
                 ],
                 password: [
@@ -63,7 +64,7 @@ export default {
                     { required: false, message: '请确认密码', trigger: 'blur' },
                     { validator: this.validatePassword, trigger: 'blur' }
                 ],
-                contact: [
+                userContact: [
                     { required: false, message: '请输入联系方式', trigger: 'blur' },
                 ]
             }
@@ -78,19 +79,20 @@ export default {
             }
         },
         register() {
-            //this.$refs['formRef'].validate((valid) => {
-            //    if (valid) {
-            //        this.$request.post('/user/register', this.form).then(res => {
-            //            if (res.code === '200') {
-            this.$hMessage.success("注册成功");
-            this.$router.push('/')
-            //this.$message.success('注册成功')
-            //            } else {
-            //                this.$message.error(res.msg)
-            //            }
-            //        })
-            //    }
-            //})
+            this.$refs['formRef'].validate((valid) => {
+                console.log(this.form)
+                if (valid) {
+                    this.$request.post('/user/register', this.form).then(res => {
+                        console.log(res)
+                        if (res.data.code === 200) {
+                            this.$router.push({ name: "index" })
+                            this.$hMessage.success('注册成功')
+                        } else {
+                            this.$hMessage.error(res.data.message)
+                        }
+                    })
+                }
+            })
         }
     }
 };

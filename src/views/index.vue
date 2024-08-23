@@ -11,8 +11,8 @@
           style="text-align: center; font-size: 28px; margin-bottom: 20px; color: #333;font-family:'SimHei;user-select: none;">
           恒生理财销售交易系统</div>
         <h-form :model="form" :rules="rules" ref="formRef">
-          <h-form-item prop="username">
-            <h-input icon="t-b-userallocation" placeholder="请输入账号" v-model="form.username" size="large"></h-input>
+          <h-form-item prop="userName">
+            <h-input icon="t-b-userallocation" placeholder="请输入账号" v-model="form.userName" size="large"></h-input>
           </h-form-item>
           <h-form-item prop="password">
             <h-input icon="t-b-password" placeholder="请输入密码" show-password v-model="form.password"
@@ -41,7 +41,7 @@ export default {
       logo,
       form: {},
       rules: {
-        username: [
+        userName: [
           { required: false, message: '请输入账号', trigger: 'blur' },
         ],
         password: [
@@ -55,20 +55,20 @@ export default {
   },
   methods: {
     login() {
-      this.$hMessage.success("登陆成功");
-      this.$router.push({ name: 'Home' });
-      /*             this.$refs['formRef'].validate((valid) => {
-                      if (valid) {
-                          this.$request.post('/user/login', this.form).then(res => {
-                              if (res.code === '200') {
-                                  this.$router.push('/')
-                                  this.$message.success('登录成功')
-                              } else {
-                                  this.$message.error(res.msg)
-                              }
-                          })
-                      }
-                  }) */
+      this.$refs['formRef'].validate((valid) => {
+        console.log(this.form)
+        if (valid) {
+          this.$request.post('/user/login', this.form).then(res => {
+            console.log(res)
+            if (res.data.code === 200) {
+              this.$router.push({ name: "Home" })
+              this.$hMessage.success('登录成功')
+            } else {
+              this.$hMessage.error(res.data.message)
+            }
+          })
+        }
+      })
     }
   }
 };
