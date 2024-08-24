@@ -26,18 +26,15 @@
           <h-col :span="3">
             <h-form-item class="query-form-item">
               <div class="form-item-content">
-                <h-button type="primary" 
-                  @mousedown.native="handleMouseDown" 
-                  @mouseup.native="handleMouseUp" 
-                  @click="searchCustomer"
-                  class="query-button">查询</h-button>
+                <h-button type="primary" @mousedown.native="handleMouseDown" @mouseup.native="handleMouseUp"
+                  @click="searchCustomer" class="query-button">查询</h-button>
               </div>
             </h-form-item>
           </h-col>
         </h-row>
       </h-form>
     </div>
-    
+
     <transition name="fade">
       <!-- 中间部分：显示客户信息 -->
       <h-card class="info-card" style="margin-top: -30px;">
@@ -45,76 +42,44 @@
           <h-row :gutter="20">
             <h-col :span="24" :md="12">
               <h-form-item label="客户姓名">
-                <h-input 
-                  v-model="customerInfo.name" 
-                  :style="getDynamicStyle('name')" 
-                  placeholder="——" 
-                  readonly
-                ></h-input>
+                <h-input v-model="customerInfo.name" :style="getDynamicStyle('name')" placeholder="——"
+                  readonly></h-input>
               </h-form-item>
               <h-form-item label="客户邮箱">
-                <h-input 
-                  v-model="customerInfo.email" 
-                  :style="getDynamicStyle('email')" 
-                  placeholder="——" 
-                  readonly
-                ></h-input>
+                <h-input v-model="customerInfo.email" :style="getDynamicStyle('email')" placeholder="——"
+                  readonly></h-input>
               </h-form-item>
               <h-form-item label="证件号码">
-                <h-input 
-                  v-model="customerInfo.idNumber" 
-                  :style="getDynamicStyle('idNumber')" 
-                  placeholder="——" 
-                  readonly
-                ></h-input>
+                <h-input v-model="customerInfo.idNumber" :style="getDynamicStyle('idNumber')" placeholder="——"
+                  readonly></h-input>
               </h-form-item>
             </h-col>
             <h-col :span="24" :md="12">
               <h-form-item label="客户电话">
-                <h-input 
-                  v-model="customerInfo.phone" 
-                  :style="getDynamicStyle('phone')" 
-                  placeholder="——" 
-                  readonly
-                ></h-input>
+                <h-input v-model="customerInfo.phone" :style="getDynamicStyle('phone')" placeholder="——"
+                  readonly></h-input>
               </h-form-item>
               <h-form-item label="证件类型">
-                <h-input 
-                  v-model="customerInfo.idType" 
-                  :style="getDynamicStyle('idType')" 
-                  placeholder="——" 
-                  readonly
-                ></h-input>
+                <h-input v-model="customerInfo.idType" :style="getDynamicStyle('idType')" placeholder="——"
+                  readonly></h-input>
               </h-form-item>
               <h-form-item label="客户类别">
-                <h-input 
-                  v-model="customerInfo.category" 
-                  :style="getDynamicStyle('category')" 
-                  placeholder="——" 
-                  readonly
-                ></h-input>
+                <h-input v-model="customerInfo.category" :style="getDynamicStyle('category')" placeholder="——"
+                  readonly></h-input>
               </h-form-item>
             </h-col>
             <h-col :span="24">
               <h-row :gutter="20">
                 <h-col :span="12">
                   <h-form-item label="风险等级">
-                    <h-input 
-                      v-model="customerInfo.riskLevel" 
-                      :style="getDynamicStyle('riskLevel')" 
-                      placeholder="——" 
-                      readonly
-                    ></h-input>
+                    <h-input v-model="customerInfo.riskLevel" :style="getDynamicStyle('riskLevel')" placeholder="——"
+                      readonly></h-input>
                   </h-form-item>
                 </h-col>
                 <h-col :span="12">
                   <h-form-item label="客户账号">
-                    <h-input 
-                      v-model="customerInfo.accountNumber" 
-                      :style="getDynamicStyle('accountNumber')" 
-                      placeholder="——" 
-                      readonly
-                    ></h-input>
+                    <h-input v-model="customerInfo.accountNumber" :style="getDynamicStyle('accountNumber')"
+                      placeholder="——" readonly></h-input>
                   </h-form-item>
                 </h-col>
               </h-row>
@@ -131,24 +96,22 @@
           <!-- 第一行 -->
           <h-col :span="12">
             <h-form-item class="form-item-inline">
-                <div class="form-item-content">
+              <div class="form-item-content">
                 <span class="form-label">基金代码</span>
-                <h-input 
-                    v-model="purchaseForm.fundCode" 
-                    placeholder="请输入基金代码" 
-                    @blur="fetchFundDetails" 
-                    :class="{ 'input-error': errors.fundCode }">
+                <h-input v-model="purchaseForm.fundCode" placeholder="请输入基金代码" @blur="fetchFundDetails"
+                  :class="{ 'input-error': errors.fundCode }">
                 </h-input>
                 <p v-if="errors.fundCode" class="error-message">{{ errors.fundCode }}</p>
-                </div>
+              </div>
             </h-form-item>
-           </h-col>
-          
+          </h-col>
+
           <h-col :span="12">
             <h-form-item class="form-item-inline">
               <div class="form-item-content">
                 <span class="form-label">支持币种</span>
-                <h-select v-model="purchaseForm.currency" placeholder="请选择币种" class="uniform-width-select" :class="{ 'select-error': errors.currency }">
+                <h-select v-model="purchaseForm.currency" placeholder="请选择币种" class="uniform-width-select"
+                  :class="{ 'select-error': errors.currency }">
                   <h-option label="人民币" value="CNY"></h-option>
                   <h-option label="美元" value="USD"></h-option>
                 </h-select>
@@ -159,35 +122,36 @@
         </h-row>
         <h-row :gutter="290">
           <!-- 第二行 -->
-            <h-col :span="12">
+          <h-col :span="12">
             <h-form-item class="form-item-inline">
-                <div class="form-item-content">
+              <div class="form-item-content">
                 <span class="form-label">赎回份额</span>
-                <h-input v-model="purchaseForm.amount" placeholder="请输入赎回份额" type="number" :class="{ 'input-error': errors.amount }"></h-input>
+                <h-input v-model="purchaseForm.amount" placeholder="请输入赎回份额" type="number"
+                  :class="{ 'input-error': errors.amount }"></h-input>
                 <p v-if="errors.amount" class="error-message">{{ errors.amount }}</p>
-                </div>
+              </div>
             </h-form-item>
-            </h-col>
-            <h-col :span="12">
+          </h-col>
+          <h-col :span="12">
             <h-form-item class="form-item-inline">
-                <div class="form-item-content">
+              <div class="form-item-content">
                 <span class="form-label">剩余份额</span>
                 <h-input v-model="purchaseForm.remainingShares" placeholder="剩余份额" disabled></h-input>
-                </div>
+              </div>
             </h-form-item>
-            </h-col>
+          </h-col>
 
         </h-row>
         <h-row :gutter="290">
           <!-- 第三行 -->
           <h-col :span="12">
-                <h-form-item class="form-item-inline">
-                <div class="form-item-content">
-                    <span class="form-label">全部赎回</span>
-                    <h-input v-model="purchaseForm.isFullRedemption" placeholder="自动判断" readonly></h-input>
-                </div>
-                </h-form-item>
-            </h-col>
+            <h-form-item class="form-item-inline">
+              <div class="form-item-content">
+                <span class="form-label">全部赎回</span>
+                <h-input v-model="purchaseForm.isFullRedemption" placeholder="自动判断" readonly></h-input>
+              </div>
+            </h-form-item>
+          </h-col>
           <h-col :span="12">
             <h-form-item class="form-item-inline">
               <div class="form-item-content">
@@ -198,7 +162,8 @@
           </h-col>
         </h-row>
         <h-form-item class="submit-button">
-          <h-button type="primary" @mousedown="handleMouseDown" @mouseup="handleMouseUp" @click="submitForm" class="purchase-button">赎回</h-button>
+          <h-button type="primary" @mousedown="handleMouseDown" @mouseup="handleMouseUp" @click="submitForm"
+            class="purchase-button">赎回</h-button>
         </h-form-item>
       </h-form>
     </h-card>
@@ -230,16 +195,16 @@ export default {
         bankCardNumber: '',
         currency: 'CNY',
         accountNumber: '',
-        remainingShares: '', 
+        remainingShares: '',
         isFullRedemption: '', // 是否全部赎回
       },
-      
+
 
       errors: {}
     };
   },
   watch: {
-    'purchaseForm.fundCode': function(newFundCode) {
+    'purchaseForm.fundCode': function (newFundCode) {
       if (newFundCode) {
         this.fetchRemainingShares(newFundCode);
       } else {
@@ -252,12 +217,12 @@ export default {
     'purchaseForm.remainingShares'(newValue) {
       this.checkFullRedemption();
     }
-    
+
   },
   created() {
-      console.log(this.searchForm);
-    },
-  methods: { 
+    console.log(this.searchForm);
+  },
+  methods: {
     searchCustomer() {
       // 模拟查询到的客户信息
       this.customerInfo = {
@@ -270,7 +235,7 @@ export default {
         riskLevel: '0',
         accountNumber: '2022091600001',
       };
-       // 模拟从后端获取到的剩余份额
+      // 模拟从后端获取到的剩余份额
       this.purchaseForm.remainingShares = '500'; // 假设剩余份额是500
 
       // 将客户账号填入申购表单
@@ -313,12 +278,12 @@ export default {
 
     validateForm() {
       this.errors = {};
-      
+
       // 基金代码验证
       if (!this.purchaseForm.fundCode) {
         this.errors.fundCode = '基金代码不能为空';
       }
-      
+
       // 购买金额验证
       if (!this.purchaseForm.amount) {
         this.errors.amount = '购买金额不能为空';
@@ -330,12 +295,12 @@ export default {
       if (!this.purchaseForm.bankCardNumber) {
         this.errors.bankCardNumber = '银行卡号不能为空';
       }
-      
+
       // 支持币种验证
       if (!this.purchaseForm.currency) {
         this.errors.currency = '请选择币种';
       }
-      
+
       return Object.keys(this.errors).length === 0; // 如果没有错误，则返回 true
     },
     submitForm() {
@@ -367,7 +332,12 @@ export default {
 <style scoped>
 /* 基本容器样式 */
 .purchase-container {
-  margin: 20px;
+  margin: 10px;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  height: 91vh;
 }
 
 /* 上半部分：查询客户信息 */
@@ -391,7 +361,8 @@ export default {
   align-items: center;
 }
 
-.query-label ,.form-label{
+.query-label,
+.form-label {
   margin-right: 10px;
   white-space: nowrap;
 }
@@ -411,7 +382,8 @@ export default {
 .purchase-card {
   display: flex;
   flex-direction: column;
-  align-items: center; /* 垂直居中 */
+  align-items: center;
+  /* 垂直居中 */
   margin: 0 auto;
   margin-bottom: 20px;
   transition: opacity 0.5s ease;
@@ -420,8 +392,10 @@ export default {
 
 .purchase-form {
   width: 100%;
-  max-width: 600px; /* 设置一个合适的最大宽度，防止表单过宽 */
-  margin: 0 auto; /* 水平居中 */
+  max-width: 600px;
+  /* 设置一个合适的最大宽度，防止表单过宽 */
+  margin: 0 auto;
+  /* 水平居中 */
 }
 
 
@@ -450,32 +424,42 @@ export default {
 /* 下半部分：基金申购表单 */
 .purchase-form {
   padding: 10px;
-  max-width: 3000px; /* 设置一个合适的最大宽度，防止表单过宽 */
+  max-width: 3000px;
+  /* 设置一个合适的最大宽度，防止表单过宽 */
   flex-direction: column;
-  margin: 0 auto; /* 水平居中 */
+  margin: 0 auto;
+  /* 水平居中 */
 }
 
 .purchase-form .h-form-item {
-  margin-bottom: 16px; /* 行与行之间的间距 */
+  margin-bottom: 16px;
+  /* 行与行之间的间距 */
 }
 
 .purchase-form .form-label {
-  display: block; /* 确保标签在单独一行 */
-  line-height: 32px; /* 确保与选择框的行高一致 */
+  display: block;
+  /* 确保标签在单独一行 */
+  line-height: 32px;
+  /* 确保与选择框的行高一致 */
 }
 
 .select-wrapper {
-  margin-left: -64px; /* 向左移动选择框，调整具体值以匹配对齐 */
+  margin-left: -64px;
+  /* 向左移动选择框，调整具体值以匹配对齐 */
 }
 
 .uniform-width-select {
-  width: 100%; /* 使选择框宽度填充父容器 */
-  min-width: 150px; /* 设置最小宽度，防止选择框过窄 */
-  box-sizing: border-box; /* 包括内边距和边框 */
+  width: 100%;
+  /* 使选择框宽度填充父容器 */
+  min-width: 150px;
+  /* 设置最小宽度，防止选择框过窄 */
+  box-sizing: border-box;
+  /* 包括内边距和边框 */
 }
 
 .submit-button {
-  text-align: center; /* 居中对齐 */
+  text-align: center;
+  /* 居中对齐 */
   margin-top: 20px;
 }
 
@@ -493,19 +477,22 @@ export default {
 }
 
 .input-error {
-  border-color: red; /* 错误输入框的边框颜色 */
+  border-color: red;
+  /* 错误输入框的边框颜色 */
 }
 
 .select-error {
-  border-color: red; /* 错误选择框的边框颜色 */
+  border-color: red;
+  /* 错误选择框的边框颜色 */
 }
 
 .error-message {
-  color: red; /* 错误消息的颜色 */
-  font-size: 12px; /* 错误消息的字体大小 */
-  margin-top: 5px; /* 错误消息与输入框的距离 */
+  color: red;
+  /* 错误消息的颜色 */
+  font-size: 12px;
+  /* 错误消息的字体大小 */
+  margin-top: 5px;
+  /* 错误消息与输入框的距离 */
   white-space: nowrap;
 }
-
-
 </style>

@@ -1,10 +1,11 @@
 <template>
-  <div style="padding: 20px; background-color: #f0f2f5;">
-    <!-- 白色背景的容器 -->
-    <div style="background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); min-height: 86vh; ">
+  <div style="padding: 20px;">
+
+    <div
+      style="background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); min-height: 86vh; ">
       <div v-if="!hasStarted">
-        <h2>欢迎使用本理财销售交易系统进行开户</h2>
-        <p>是否要开始开户流程？</p>
+        <h2 style="margin-bottom: 10px;">欢迎使用本理财销售交易系统进行开户</h2>
+        <p style="margin-bottom: 10px;">是否要开始开户流程？</p>
         <h-button type="primary" @click="startProcess">开始开户</h-button>
       </div>
 
@@ -16,19 +17,21 @@
           <h-step title="完成风险测评问卷"></h-step>
           <h-step title="完成"></h-step>
         </h-steps>
-        
+
         <!-- 第一步：填写基本信息 -->
         <div v-if="current === 0">
           <h2>填写基本信息</h2>
           <h-form ref="form" :model="form" label-width="120px">
             <h-row :gutter="16">
               <h-col :span="12">
-                <h-form-item label="用户姓名" prop="userName" :rules="[{ required: true, message: '请输入用户姓名', trigger: 'blur' }]">
+                <h-form-item label="用户姓名" prop="userName"
+                  :rules="[{ required: true, message: '请输入用户姓名', trigger: 'blur' }]">
                   <h-input v-model="form.userName" type="text" placeholder="请输入用户姓名" />
                 </h-form-item>
               </h-col>
               <h-col :span="12">
-                <h-form-item label="用户类型" prop="userType" :rules="[{ required: true, message: '请选择用户类型', trigger: 'change' }]">
+                <h-form-item label="用户类型" prop="userType"
+                  :rules="[{ required: true, message: '请选择用户类型', trigger: 'change' }]">
                   <h-select v-model="form.userType">
                     <h-option label="个人" value="个人"></h-option>
                     <h-option label="机构" value="机构"></h-option>
@@ -43,7 +46,8 @@
                 </h-form-item>
               </h-col>
               <h-col :span="12">
-                <h-form-item label="身份证类型" prop="idType" :rules="[{ required: true, message: '请选择身份证类型', trigger: 'change' }]">
+                <h-form-item label="身份证类型" prop="idType"
+                  :rules="[{ required: true, message: '请选择身份证类型', trigger: 'change' }]">
                   <h-select v-model="form.idType">
                     <h-option label="身份证" value="身份证"></h-option>
                     <h-option label="护照" value="护照"></h-option>
@@ -54,7 +58,8 @@
             </h-row>
             <h-row :gutter="16">
               <h-col :span="12">
-                <h-form-item label="身份证号码" prop="idNumber" :rules="[{ required: true, message: '请输入正确的身份证号码', validator: validateIdNumber, trigger: 'blur' }]">
+                <h-form-item label="身份证号码" prop="idNumber"
+                  :rules="[{ required: true, message: '请输入正确的身份证号码', validator: validateIdNumber, trigger: 'blur' }]">
                   <h-input v-model="form.idNumber" type="text" placeholder="请输入身份证号码" />
                 </h-form-item>
               </h-col>
@@ -72,108 +77,111 @@
             </div>
           </h-form>
         </div>
-        
+
         <!-- 第二步：添加银行卡 -->
         <div v-if="current === 1" class="add-bank-card">
           <h2>添加银行卡</h2>
           <h-card :border="false" class="form-container" dis-hover>
             <div class="form-section">
               <label for="creditcard_id">银行卡号</label>
-              <h-input id="creditcard_id" v-model="bankForm.creditcard_id" placeholder="请输入银行卡号" @blur="validateCardNumber" />
-  
+              <h-input id="creditcard_id" v-model="bankForm.creditcard_id" placeholder="请输入银行卡号"
+                @blur="validateCardNumber" />
+
               <label for="bank_name">开户行</label>
               <h-input id="bank_name" v-model="bankForm.bank_name" placeholder="请输入开户行名称" />
-              
+
               <label for="balance">初始金额</label>
-              <h-input id="balance" v-model="bankForm.balance" type="number" placeholder="请输入初始金额" @blur="validateBalance" />
-              
+              <h-input id="balance" v-model="bankForm.balance" type="number" placeholder="请输入初始金额"
+                @blur="validateBalance" />
+
               <label for="password">密码</label>
               <h-input id="password" v-model="bankForm.password" type="password" placeholder="请输入密码" />
-              
+
               <label for="confirm_password">确认密码</label>
-              <h-input id="confirm_password" v-model="bankForm.confirm_password" type="password" placeholder="请再次输入密码" @blur="validatePassword" />
+              <h-input id="confirm_password" v-model="bankForm.confirm_password" type="password" placeholder="请再次输入密码"
+                @blur="validatePassword" />
             </div>
           </h-card>
           <div class="button-section">
             <h-button type="primary" @click="submitBankCard">保存并下一步</h-button>
           </div>
         </div>
-        
+
         <!-- 第三步：完成风险测评问卷 -->
         <div v-if="current === 2" class="risk-assessment-container">
           <h3>风险等级测试问卷</h3>
           <h-card :border="false" style="margin-bottom:20px" dis-hover>
-              <h-form ref="riskForm" label-width="120px">
-                  <!-- 问卷题目 -->
-                  <h-form-item label="您的投资经验">
-                      <h-radio-group v-model="formData.experience">
-                          <h-radio label="newbie">新手</h-radio>
-                          <h-radio label="intermediate">有一定经验</h-radio>
-                          <h-radio label="expert">专家</h-radio>
-                      </h-radio-group>
-                  </h-form-item>
+            <h-form ref="riskForm" label-width="120px">
+              <!-- 问卷题目 -->
+              <h-form-item label="您的投资经验">
+                <h-radio-group v-model="formData.experience">
+                  <h-radio label="newbie">新手</h-radio>
+                  <h-radio label="intermediate">有一定经验</h-radio>
+                  <h-radio label="expert">专家</h-radio>
+                </h-radio-group>
+              </h-form-item>
 
-                  <h-form-item label="您的投资目标 (可多选)">
-                      <h-checkbox-group v-model="formData.goals">
-                          <h-checkbox label="preservation">资产保值</h-checkbox>
-                          <h-checkbox label="growth">资产增值</h-checkbox>
-                          <h-checkbox label="income">产生收入</h-checkbox>
-                      </h-checkbox-group>
-                  </h-form-item>
+              <h-form-item label="您的投资目标 (可多选)">
+                <h-checkbox-group v-model="formData.goals">
+                  <h-checkbox label="preservation">资产保值</h-checkbox>
+                  <h-checkbox label="growth">资产增值</h-checkbox>
+                  <h-checkbox label="income">产生收入</h-checkbox>
+                </h-checkbox-group>
+              </h-form-item>
 
-                  <h-form-item label="您能接受的最大投资损失">
-                      <h-radio-group v-model="formData.lossTolerance">
-                          <h-radio label="5">5% 以下</h-radio>
-                          <h-radio label="10">5%-10%</h-radio>
-                          <h-radio label="20">10%-20%</h-radio>
-                          <h-radio label="more">20% 以上</h-radio>
-                      </h-radio-group>
-                  </h-form-item>
+              <h-form-item label="您能接受的最大投资损失">
+                <h-radio-group v-model="formData.lossTolerance">
+                  <h-radio label="5">5% 以下</h-radio>
+                  <h-radio label="10">5%-10%</h-radio>
+                  <h-radio label="20">10%-20%</h-radio>
+                  <h-radio label="more">20% 以上</h-radio>
+                </h-radio-group>
+              </h-form-item>
 
-                  <h-form-item label="您的投资时间范围">
-                      <h-radio-group v-model="formData.investmentHorizon">
-                          <h-radio label="short-term">1 年以下</h-radio>
-                          <h-radio label="medium-term">1-3 年</h-radio>
-                          <h-radio label="long-term">3 年以上</h-radio>
-                      </h-radio-group>
-                  </h-form-item>
+              <h-form-item label="您的投资时间范围">
+                <h-radio-group v-model="formData.investmentHorizon">
+                  <h-radio label="short-term">1 年以下</h-radio>
+                  <h-radio label="medium-term">1-3 年</h-radio>
+                  <h-radio label="long-term">3 年以上</h-radio>
+                </h-radio-group>
+              </h-form-item>
 
-                  <h-form-item label="您愿意承担的风险">
-                      <h-radio-group v-model="formData.riskTolerance">
-                          <h-radio label="low">较低风险，较低收益</h-radio>
-                          <h-radio label="moderate">中等风险，中等收益</h-radio>
-                          <h-radio label="high">高风险，高收益</h-radio>
-                      </h-radio-group>
-                  </h-form-item>
+              <h-form-item label="您愿意承担的风险">
+                <h-radio-group v-model="formData.riskTolerance">
+                  <h-radio label="low">较低风险，较低收益</h-radio>
+                  <h-radio label="moderate">中等风险，中等收益</h-radio>
+                  <h-radio label="high">高风险，高收益</h-radio>
+                </h-radio-group>
+              </h-form-item>
 
-                  <h-form-item label="您的流动性需求">
-                      <h-radio-group v-model="formData.liquidityNeeds">
-                          <h-radio label="high">高，随时可能需要用到这笔资金</h-radio>
-                          <h-radio label="medium">中，可能在未来1-3年内需要部分资金</h-radio>
-                          <h-radio label="low">低，长期不需要动用这笔资金</h-radio>
-                      </h-radio-group>
-                  </h-form-item>
+              <h-form-item label="您的流动性需求">
+                <h-radio-group v-model="formData.liquidityNeeds">
+                  <h-radio label="high">高，随时可能需要用到这笔资金</h-radio>
+                  <h-radio label="medium">中，可能在未来1-3年内需要部分资金</h-radio>
+                  <h-radio label="low">低，长期不需要动用这笔资金</h-radio>
+                </h-radio-group>
+              </h-form-item>
 
-                  <h-form-item label="您对市场波动的反应">
-                      <h-radio-group v-model="formData.marketReaction">
-                          <h-radio label="panic">恐慌，会立刻卖出资产</h-radio>
-                          <h-radio label="concerned">担忧，会考虑调整部分投资</h-radio>
-                          <h-radio label="calm">冷静，愿意等待市场恢复</h-radio>
-                      </h-radio-group>
-                  </h-form-item>
+              <h-form-item label="您对市场波动的反应">
+                <h-radio-group v-model="formData.marketReaction">
+                  <h-radio label="panic">恐慌，会立刻卖出资产</h-radio>
+                  <h-radio label="concerned">担忧，会考虑调整部分投资</h-radio>
+                  <h-radio label="calm">冷静，愿意等待市场恢复</h-radio>
+                </h-radio-group>
+              </h-form-item>
 
-                  <h-form-item>
-                      <h-button type="primary" @click="submitForm">提交问卷</h-button>
-                  </h-form-item>
-              </h-form>
+              <h-form-item>
+                <h-button type="primary" @click="submitForm">提交问卷</h-button>
+              </h-form-item>
+            </h-form>
           </h-card>
 
           <!-- 显示风险等级结果 -->
           <h-alert v-if="riskLevel" type="info" show-icon>
-              您的风险等级为：{{ riskLevel }}
+            您的风险等级为：{{ riskLevel }}
           </h-alert>
         </div>
-        
+
         <!-- 第四步：开户完成 -->
         <div v-if="current === 3">
           <h2>开户完成</h2>
@@ -328,46 +336,46 @@ export default {
     submitForm() {
       let valid = true;
       const requiredFields = [
-          'experience',
-          'goals',
-          'lossTolerance',
-          'investmentHorizon',
-          'riskTolerance',
-          'liquidityNeeds',
-          'marketReaction'
+        'experience',
+        'goals',
+        'lossTolerance',
+        'investmentHorizon',
+        'riskTolerance',
+        'liquidityNeeds',
+        'marketReaction'
       ];
 
       requiredFields.forEach(field => {
-          if (!this.formData[field] || (Array.isArray(this.formData[field]) && this.formData[field].length === 0)) {
-              valid = false;
-              this.$hMessage.error(`请完成所有题目再提交`);
-          }
+        if (!this.formData[field] || (Array.isArray(this.formData[field]) && this.formData[field].length === 0)) {
+          valid = false;
+          this.$hMessage.error(`请完成所有题目再提交`);
+        }
       });
 
       if (valid) {
-          // 所有题目都已完成，进行风险等级判断
-          const { experience, goals, lossTolerance, investmentHorizon, riskTolerance, liquidityNeeds, marketReaction } = this.formData;
+        // 所有题目都已完成，进行风险等级判断
+        const { experience, goals, lossTolerance, investmentHorizon, riskTolerance, liquidityNeeds, marketReaction } = this.formData;
 
-          if (riskTolerance === 'high' || lossTolerance === 'more') {
-              this.riskLevel = '激进型';
-          } else if (riskTolerance === 'moderate' || lossTolerance === '10') {
-              this.riskLevel = '进取型';
-          } else if (riskTolerance === 'low' && investmentHorizon !== 'short-term') {
-              this.riskLevel = '稳健型';
-          } else if (riskTolerance === 'low' && investmentHorizon === 'short-term') {
-              this.riskLevel = '谨慎型';
-          } else {
-              this.riskLevel = '平衡型';
-          }
+        if (riskTolerance === 'high' || lossTolerance === 'more') {
+          this.riskLevel = '激进型';
+        } else if (riskTolerance === 'moderate' || lossTolerance === '10') {
+          this.riskLevel = '进取型';
+        } else if (riskTolerance === 'low' && investmentHorizon !== 'short-term') {
+          this.riskLevel = '稳健型';
+        } else if (riskTolerance === 'low' && investmentHorizon === 'short-term') {
+          this.riskLevel = '谨慎型';
+        } else {
+          this.riskLevel = '平衡型';
+        }
 
-          // 保存风险等级结果到后台
-          this.saveRiskLevel().then(() => {
-            this.$hMessage.success('风险等级已保存');
-            this.nextStep();
-          }).catch(error => {
-            this.$hMessage.error('保存风险等级失败，请重试');
-            console.error(error);
-          });
+        // 保存风险等级结果到后台
+        this.saveRiskLevel().then(() => {
+          this.$hMessage.success('风险等级已保存');
+          this.nextStep();
+        }).catch(error => {
+          this.$hMessage.error('保存风险等级失败，请重试');
+          console.error(error);
+        });
       }
     },
     saveRiskLevel() {
@@ -433,10 +441,10 @@ export default {
 }
 
 .risk-assessment-container {
-    margin: 10px;
-    padding: 20px;
-    background-color: #ffffff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  margin: 10px;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 </style>

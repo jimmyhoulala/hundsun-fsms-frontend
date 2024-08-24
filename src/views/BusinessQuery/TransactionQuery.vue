@@ -21,8 +21,8 @@
 
                 <h-form-item label="交易类型">
                     <h-select v-model="searchParams.transaction_type">
-                        <h-option label="申购" value="buy"></h-option>
-                        <h-option label="赎回" value="sell"></h-option>
+                        <h-option label="申购" value=1></h-option>
+                        <h-option label="赎回" value=0></h-option>
                     </h-select>
                 </h-form-item>
                 <h-form-item label="交易状态">
@@ -32,7 +32,8 @@
                     </h-select>
                 </h-form-item>
                 <h-form-item label="交易日期">
-                    <h-date-picker v-model="searchParams.transaction_date" type="date" />
+                    <h-date-picker v-model="searchParams.transaction_date" type="date" format="yyyy-MM-dd"
+                        @on-change="handleDateChange" />
                 </h-form-item>
                 <h-form-item style="margin-top:33px">
                     <h-button type="primary" @click="onSearch">查询</h-button>
@@ -67,221 +68,102 @@ export default {
             columns1: [
                 {
                     title: "交易单号",
-                    key: "transaction_id",
+                    key: "transactionId",
                 },
                 {
                     title: "用户ID",
-                    key: "customer_id",
+                    key: "customerId",
                 },
                 {
                     title: "账号",
-                    key: "account_id",
+                    key: "accountId",
                 },
                 {
                     title: "产品ID",
-                    key: "fund_id",
+                    key: "fundId",
                 },
                 {
                     title: "交易类型",
-                    key: "transaction_type",
+                    key: "transactionType",
+                    render: (h, params) => {
+                        const type = params.row.transactionType;
+                        const displayText = type === 1 ? '申购' : '赎回';
+                        return h('span', displayText);
+                    }
                 },
                 {
                     title: "交易金额",
-                    key: "transaction_amount",
+                    key: "transactionAmount",
                 },
                 {
                     title: "交易份额",
-                    key: "transaction_share",
+                    key: "transactionShare",
                 },
                 {
                     title: "交易日期",
-                    key: "transaction_date",
+                    key: "transactionDate",
+                    render: (h, params) => {
+                        const date = new Date(params.row.transactionDate);
+                        const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+                        return h('span', formattedDate);
+                    }
                 },
                 {
                     title: "订单状态",
-                    key: "transaction_state"
+                    key: "transactionState",
+                    render: (h, params) => {
+                        const state = params.row.transactionState;
+                        const displayText = state === 0 ? '未完成' : '已完成';
+                        return h('span', displayText);
+                    }
                 },
             ],
             data1: [
-                {
-                    transaction_id: "000096",
-                    account_id: "930000000096",
-                    fund_id: "093000",
-                    transaction_type: "buy",
-                    transaction_amount: "10000.00",
-                    transaction_share: "0.00",
-                    transaction_date: "2021-11-25",
-                    customer_id: "20211117000291",
-                    transaction_state: "未确认",
-                },
-                {
-                    transaction_id: "000096",
-                    account_id: "930000000096",
-                    fund_id: "093000",
-                    transaction_type: "buy",
-                    transaction_amount: "10000.00",
-                    transaction_share: "0.00",
-                    transaction_date: "2021-11-25",
-                    customer_id: "20211117000291",
-                    transaction_state: "未确认",
-                },
-                {
-                    transaction_id: "000096",
-                    account_id: "930000000096",
-                    fund_id: "093000",
-                    transaction_type: "buy",
-                    transaction_amount: "10000.00",
-                    transaction_share: "0.00",
-                    transaction_date: "2021-11-25",
-                    customer_id: "20211117000291",
-                    transaction_state: "未确认",
-                },
-                {
-                    transaction_id: "000096",
-                    account_id: "930000000096",
-                    fund_id: "093000",
-                    transaction_type: "buy",
-                    transaction_amount: "10000.00",
-                    transaction_share: "0.00",
-                    transaction_date: "2021-11-25",
-                    customer_id: "20211117000291",
-                    transaction_state: "未确认",
-                },
-                {
-                    transaction_id: "000096",
-                    account_id: "930000000096",
-                    fund_id: "093000",
-                    transaction_type: "buy",
-                    transaction_amount: "10000.00",
-                    transaction_share: "0.00",
-                    transaction_date: "2021-11-25",
-                    customer_id: "20211117000291",
-                    transaction_state: "未确认",
-                },
-                {
-                    transaction_id: "000096",
-                    account_id: "930000000096",
-                    fund_id: "093000",
-                    transaction_type: "buy",
-                    transaction_amount: "10000.00",
-                    transaction_share: "0.00",
-                    transaction_date: "2021-11-25",
-                    customer_id: "20211117000291",
-                    transaction_state: "未确认",
-                },
-                {
-                    transaction_id: "000096",
-                    account_id: "930000000096",
-                    fund_id: "093000",
-                    transaction_type: "buy",
-                    transaction_amount: "10000.00",
-                    transaction_share: "0.00",
-                    transaction_date: "2021-11-25",
-                    customer_id: "20211117000291",
-                    transaction_state: "未确认",
-                },
-                {
-                    transaction_id: "000096",
-                    account_id: "930000000096",
-                    fund_id: "093000",
-                    transaction_type: "buy",
-                    transaction_amount: "10000.00",
-                    transaction_share: "0.00",
-                    transaction_date: "2021-11-25",
-                    customer_id: "20211117000291",
-                    transaction_state: "未确认",
-                },
-                {
-                    transaction_id: "000096",
-                    account_id: "930000000096",
-                    fund_id: "093000",
-                    transaction_type: "buy",
-                    transaction_amount: "10000.00",
-                    transaction_share: "0.00",
-                    transaction_date: "2021-11-25",
-                    customer_id: "20211117000291",
-                    transaction_state: "未确认",
-                },
-                {
-                    transaction_id: "000096",
-                    account_id: "930000000096",
-                    fund_id: "093000",
-                    transaction_type: "buy",
-                    transaction_amount: "10000.00",
-                    transaction_share: "0.00",
-                    transaction_date: "2021-11-25",
-                    customer_id: "20211117000291",
-                    transaction_state: "未确认",
-                },
-                {
-                    transaction_id: "000096",
-                    account_id: "930000000096",
-                    fund_id: "093000",
-                    transaction_type: "buy",
-                    transaction_amount: "10000.00",
-                    transaction_share: "0.00",
-                    transaction_date: "2021-11-25",
-                    customer_id: "20211117000291",
-                    transaction_state: "未确认",
-                },
-                {
-                    transaction_id: "000096",
-                    account_id: "930000000096",
-                    fund_id: "093000",
-                    transaction_type: "buy",
-                    transaction_amount: "10000.00",
-                    transaction_share: "0.00",
-                    transaction_date: "2021-11-25",
-                    customer_id: "20211117000291",
-                    transaction_state: "未确认",
-                },
-                {
-                    transaction_id: "000096",
-                    account_id: "930000000096",
-                    fund_id: "093000",
-                    transaction_type: "buy",
-                    transaction_amount: "10000.00",
-                    transaction_share: "0.00",
-                    transaction_date: "2021-11-25",
-                    customer_id: "20211117000291",
-                    transaction_state: "未确认",
-                },
-                {
-                    transaction_id: "000096",
-                    account_id: "930000000096",
-                    fund_id: "093000",
-                    transaction_type: "buy",
-                    transaction_amount: "10000.00",
-                    transaction_share: "0.00",
-                    transaction_date: "2021-11-25",
-                    customer_id: "20211117000291",
-                    transaction_state: "未确认",
-                },
-                {
-                    transaction_id: "000096",
-                    account_id: "930000000096",
-                    fund_id: "093000",
-                    transaction_type: "buy",
-                    transaction_amount: "10000.00",
-                    transaction_share: "0.00",
-                    transaction_date: "2021-11-25",
-                    customer_id: "20211117000291",
-                    transaction_state: "未确认",
-                },
-            ],
+            ]
         };
     },
     methods: {
+        handleDateChange(value) {
+            this.searchParams.transaction_date = value;
+        },
         onSearch() {
+            const params = {
+                current: this.currentPage,
+                size: 10000,
+                transactionId: this.searchParams.transaction_id,
+                customerId: this.searchParams.customer_id,
+                customerIdCard: this.searchParams.customer_creditcard_id,
+                accountId: this.searchParams.account_id,
+                fundId: this.searchParams.fund_id,
+                transactionType: this.searchParams.transaction_type,
+                transactionState: this.searchParams.transaction_state,
+                transactionDate: this.searchParams.transaction_date ? new Date(this.searchParams.transaction_date).toISOString().split('T')[0] : null,
+            };
+            console.log(params)
+            console.log(params.transactionDate)
+            this.$request.get('/transaction/query', { params })
+                .then(res => {
+                    console.log(res)
+                    if (res.data.code === 200) {
+                        this.$hMessage.success('查询成功')
+                        this.data1 = res.data.data.records
+                    } else {
+                        this.$hMessage.error(res.data.message)
+                    }
+                })
         },
         onReset() {
             this.searchParams = {
                 transaction_id: '',
+                customer_id: '',
+                customer_creditcard_id: '',
                 account_id: '',
                 fund_id: '',
                 transaction_type: '',
                 transaction_date: '',
+                transaction_state: '',
             };
+            this.data1 = [];
         },
         handleDetail(row) {
             console.log('View details for:', row);
@@ -289,6 +171,9 @@ export default {
         handlePageChange(page) {
             this.currentPage = page;
         },
+    },
+    created() {
+        this.onSearch()
     },
     computed: {
         total() {
